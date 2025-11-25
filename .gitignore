@@ -1,0 +1,6 @@
+.ipynb_checkpoints
+cropandweed-dataset
+runs
+yolo-dataset
+tmp
+*.pt
