@@ -72,7 +72,7 @@ Since this project is contained within a Jupyter Notebook, setup is straightforw
 Clone the repository and install dependencies:
 
 ```bash
-git clone [https://github.com/Igkho/CropAndWeedDetection.git](https://github.com/Igkho/CropAndWeedDetection.git)
+git clone https://github.com/Igkho/CropAndWeedDetection.git
 cd CropAndWeedDetection
 
 # Create a virtual environment (Optional but recommended)
