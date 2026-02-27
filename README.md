@@ -17,7 +17,7 @@ This repository contains the complete research and training pipeline for detecti
 The entire workflow—from data acquisition to model export—is encapsulated in a single, reproducible **Jupyter Notebook** (`CropAndWeedDetection.ipynb`). This allows researchers and developers to step through the data analysis, training process, and validation metrics interactively.
 
 > **Looking for Production Inference?**
-> This repository is for *training and research*. For high-performance deployment (100+ FPS), see C++/CUDA TensorRT engine: 
+> This repository is for *training and research*. For high-performance deployment (150+ FPS), see C++/CUDA TensorRT engine: 
 > [**ZeroHostCopyInference**](https://github.com/Igkho/ZeroHostCopyInference)
 
 ---
@@ -30,7 +30,8 @@ The notebook covers the full lifecycle of the machine learning project:
 2.  **Model Training:** Fine-tunes a **YOLOv8** CNN to detect small seedlings with high precision.
 3.  **Video Annotation:** Runs inference on sample video footage (`Moving.mp4`) to generate visualized results.
 4.  **Object Tracking:** Implements **ByteTrack** with custom velocity filtering to maintain consistent IDs for seedlings despite occlusion or camera movement.
-5.  **Export:** Generates the `.onnx` weights required for the C++ inference engine.
+5.  **Export:** Generates the `.onnx` weights required for the C++/CUDA inference engine.
+6.  **Int8 Quantization:** Generates the `.onnx` weights with Q/DQ nodes required for the TensorRT inference engine to run in int8 mode.
 
 ---
 
@@ -64,7 +65,7 @@ The notebook produces annotated video samples to verify tracking stability.
 Since this project is contained within a Jupyter Notebook, setup is straightforward.
 
 ### 1. Prerequisites
-* Python 3.10 - 3.13
+* Python 3.10 - 3.12
 * NVIDIA GPU (Recommended for training)
 
 ### 2. Setup Environment

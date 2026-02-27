@@ -9,3 +9,4 @@ supervision==0.27.0
 ultralytics==8.3.228
 albumentations==2.0.8
 lap==0.5.12
+nvidia-modelopt[all]==0.41.0
