@@ -32,19 +32,22 @@ The notebook covers the full lifecycle of the machine learning project:
 4.  **Object Tracking:** Implements **ByteTrack** with custom velocity filtering to maintain consistent IDs for seedlings despite occlusion or camera movement.
 5.  **Export:** Generates the `.onnx` weights required for the C++/CUDA inference engine.
 6.  **Int8 Quantization:** Generates the `.onnx` weights with Q/DQ nodes required for the TensorRT inference engine to run in int8 mode.
+7.  **Performance Evaluation:** Validates and compares quantitative metrics (mAP, Precision, Recall) between the baseline FP32 model and the quantized INT8 model to ensure accuracy is maintained.
 
 ---
 
 ## 📊 Quantitative Metrics
 
-Performance on the "Fine24" seedling subset (24 classes):
+Performance evaluated on the "Fine24" seedling subset (24 classes). 
 
-| Metric | Score | Notes |
+*Note: The INT8 ONNX export utilizes a static computational graph. To accurately reproduce the quantized metrics, validation must be run with a strict batch size of 16.*
+
+| Metric | Baseline (FP32) | Quantized (INT8) |
 | :--- | :--- | :--- |
-| **Precision** | **0.80** | High confidence in positive detections. |
-| **Recall** | **0.75** | Effectively finds most seedlings in the frame. |
-| **mAP@50** | **0.81** | Strong performance at standard IoU threshold. |
-| **mAP@50-95** | **0.60** | robust localization accuracy. |
+| **mAP@50** | 0.862 | 0.855 |
+| **mAP@50-95** | 0.665 | 0.624 |
+| **Precision** | 0.846 | 0.855 |
+| **Recall** | 0.790 | 0.776 |
 
 *Model Latency (RTX 3060 Ti, PyTorch backend): ~28ms (approx. 35 FPS theoretical).*
 
